@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Produto {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  descricao   String
+  marca       String
+  modelo      String
+  imagem      String
+  nota        Float
+  videoReview String
+  tags        String[]
+
+  precoBase        Float
+  precoPromocional Float
+  menorPreco       Float
+  maiorPreco       Float
+  precoMedio       Float
+
+  especificacoes Json
+  ItemPedido     ItemPedido[]
+
+  @@map("produtos")
+}
+
+model Usuario {
+  id         Int       @id @default(autoincrement())
+  nome       String
+  email      String    @unique
+  senha      String
+  cpf        String?   @unique
+  admin      Boolean   @default(false)
+  enderecoId Int?      @unique
+  endereco   Endereco? @relation(fields: [enderecoId], references: [id])
+  pedidos    Pedido[]
+
+  @@map("usuarios")
+}
+
+model Endereco {
+  id          Int    @id @default(autoincrement())
+  logradouro  String
+  numero      Int
+  complemento String
+  bairro      String
+  cidade      String
+  estado      String
+
+  usuario Usuario?
+  
+  @@map("enderecos")
+}
+
+model Pedido {
+  id             Int      @id @default(autoincrement())
+  dataCompra     DateTime @default(now())
+  valorTotal     Float
+  status         String
+  formaPagamento String
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  logradouro  String
+  numero      Int
+  complemento String
+  bairro      String
+  cidade      String
+  estado      String
+
+  itens ItemPedido[]
+
+  @@map("pedidos")
+}
+
+model ItemPedido {
+  id            Int   @id @default(autoincrement())
+  quantidade    Int
+  precoUnitario Float
+
+  pedidoId Int
+  pedido   Pedido @relation(fields: [pedidoId], references: [id])
+
+  produtoId Int
+  produto   Produto @relation(fields: [produtoId], references: [id])
+
+  @@map("itempedido")
+}

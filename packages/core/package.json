@@ -1,0 +1,16 @@
+{
+  "name": "@gstore/core",
+  "version": "1.0.0",
+  "description": "Regras de negócio do da loja gam3r",
+  "main":"dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build":"tsup src/index.ts --dts --minify",
+    "dev": "tsup src/index.ts --dts --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.4.0"
+  }
+}

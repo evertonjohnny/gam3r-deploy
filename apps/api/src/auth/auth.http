@@ -1,0 +1,22 @@
+@baseURL = http://localhost:4000
+
+
+### Cadastro
+POST {{baseURL}}/cadastro
+Content-Type: application/json
+
+{
+    "nome":"Ana",
+    "email": "ana@mail.com",
+    "senha":"123456"
+}
+
+### Login
+# @name login
+POST {{baseURL}}/login
+Content-Type: application/json
+
+{
+    "email": "a@mail.com",
+    "senha":"123456"
+}

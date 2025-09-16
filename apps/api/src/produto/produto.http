@@ -1,0 +1,58 @@
+GET http://localhost:4000/produtos
+
+###
+GET http://localhost:4000/produtos/1
+
+### Pegar a quantidade de páginas
+GET http://localhost:4000/produtos/qtdePaginas
+
+### Pegar uma página de produtos
+GET http://localhost:4000/produtos?p=2
+
+
+### Login
+# @name login
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "admin@mail.com",
+    "senha":"123456"
+}
+
+###
+@token = {{login.response.body.token}}
+
+### Criar um produto
+POST http://localhost:4000/produtos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "id": -1,
+    "nome": "Novo Notebook                     ",
+    "descricao": "O Novo Notebook é um notebook gamer poderoso, ideal para jogos pesados e multitarefas.",
+    "marca": "Melhor Marca",
+    "modelo": "AN515-54-58CL",
+    "imagem": "https://firebasestorage.googleapis.com/v0/b/formacao-dev.appspot.com/o/lancamentos%2Fgam3rstore%2Facer-nitro-5.png?alt=media&token=094ba6a8-1a4d-414a-b32c-c176bfeaca8e",
+    "videoReview": "https://www.youtube.com/embed/8NQFr9De3lU?si=s_lN2KTQresD-36Y",
+    "tags": [
+        "Novo",
+        "Imperdível"
+    ],
+    "especificacoes": {
+        "Peso": "2.5 Kg",
+        "Tela": "15.6 polegadas Full HD",
+        "Memória": "16GB DDR4",
+        "destaque": "NVIDIA GeForce RTX 2060",
+        "Processador": "Intel Core i5-9300H",
+        "Armazenamento": "512GB SSD",
+        "Placa de Vídeo": "NVIDIA GeForce RTX 2060"
+    },
+    "precoBase": 6499.99,
+    "precoPromocional": 5999.99,
+    "menorPreco": 4850.9,
+    "maiorPreco": 9800.8,
+    "precoMedio": 6503.7,
+    "nota": 3.5
+}

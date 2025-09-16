@@ -1,0 +1,38 @@
+@baseURL = http://localhost:4000
+
+### Login
+# @name login
+POST {{baseURL}}/login
+Content-Type: application/json
+
+{
+    "email": "ana@mail.com",
+    "senha":"654321"
+}
+
+###
+@token = {{login.response.body.token}}
+
+### Criar Pedido
+POST {{baseURL}}/pedidos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "formaPagamento": "CREDITO",
+    "itens": [
+        {
+            "produtoId": 1,
+            "quantidade": 6,
+            "nome": "Notebook Gamer Acer Nitro 5"
+        }
+    ]
+}
+
+### Pegar Pedido
+GET {{baseURL}}/pedidos
+Authorization: Bearer {{token}}
+
+### Pegar Pagina de Pedido
+GET {{baseURL}}/pedidos?p=2
+Authorization: Bearer {{token}}
