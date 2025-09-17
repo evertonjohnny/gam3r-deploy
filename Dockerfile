@@ -1,12 +1,9 @@
 FROM node:lts-alpine3.22
 
-WORKDIR /apps
+WORKDIR /app
 
 COPY package*.json ./
 COPY turbo.json ./
-
-# Create directories before copying package.json files
-RUN mkdir -p apps/api apps/web packages/core
 
 COPY apps/api/package.json ./apps/api/package.json
 COPY apps/web/package.json ./apps/web/package.json
