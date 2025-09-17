@@ -4,6 +4,10 @@ WORKDIR /apps
 
 COPY package*.json ./
 COPY turbo.json ./
+
+# Create directories before copying package.json files
+RUN mkdir -p apps/api apps/web packages/core
+
 COPY apps/api/package.json ./apps/api/package.json
 COPY apps/web/package.json ./apps/web/package.json
 COPY packages/core/package.json ./packages/core/package.json
