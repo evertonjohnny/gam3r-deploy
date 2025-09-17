@@ -19,12 +19,12 @@ ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 ENV DATABASE_URL=""
 ENV DIRECT_URL=""
 
-RUN npm run build
-
-RUN cd ./apps/api/prisma
-
-CMD ["npx", "prisma", "generate"]
+RUN cd ./apps/api/prisma 
+RUN npx prisma generate
 
 RUN cd ./
+
+RUN npm run build
+
 EXPOSE 4000 3000
-RUN npm run start
+CMD ["npm", "run", "start"]
