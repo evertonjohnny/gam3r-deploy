@@ -19,8 +19,7 @@ ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 ENV DATABASE_URL=""
 ENV DIRECT_URL=""
 
-RUN cd ./apps/api/prisma 
-RUN npx prisma generate
+RUN cd ./apps/api/prisma && npx prisma generate
 
 RUN cd ./
 
