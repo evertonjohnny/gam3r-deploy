@@ -1,10 +1,9 @@
 services:
   - type: web
-    name: api-service
+    name: gam3r-api
     env: docker
     plan: free
     dockerfilePath: ./Dockerfile.api
-    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
@@ -15,15 +14,13 @@ services:
       - key: DIRECT_URL
         sync: false
       - key: JWT_SECRET
-        generateValue: true        
-    healthCheckPath: /health
+        generateValue: true
 
   - type: web
-    name: web-service
+    name: gam3r-web
     env: docker
     plan: free
     dockerfilePath: ./Dockerfile.web
-    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
@@ -31,4 +28,4 @@ services:
         value: 3000
       # Passe esta URL DEPOIS de criar o serviço da API
       - key: NEXT_PUBLIC_API_URL
-        sync: false        
+        sync: false
