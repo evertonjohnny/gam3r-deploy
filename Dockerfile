@@ -21,7 +21,10 @@ ENV DIRECT_URL=""
 
 RUN npm run build
 
-RUN cd ./apps/api/prisma && npx prisma generate
+RUN cd ./apps/api/prisma
 
+CMD ["npx", "prisma", "generate"]
+
+RUN cd ./
 EXPOSE 4000 3000
-CMD ["npm", "run", "start"]
+RUN npm run start
