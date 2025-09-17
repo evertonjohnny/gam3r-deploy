@@ -1,6 +1,6 @@
 FROM node:lts-alpine3.22
 
-WORKDIR /app
+WORKDIR /apps
 
 COPY package*.json ./
 COPY turbo.json ./
