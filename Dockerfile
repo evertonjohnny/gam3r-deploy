@@ -9,9 +9,9 @@ COPY apps/api/package.json ./apps/api/package.json
 COPY apps/web/package.json ./apps/web/package.json
 COPY packages/core/package.json ./packages/core/package.json
 
-RUN npm i
-
 COPY . .
+
+RUN npm i
 
 ARG NEXT_PUBLIC_API_URL="http://localhost:4000"
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
