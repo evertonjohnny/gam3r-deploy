@@ -13,7 +13,7 @@ COPY . .
 
 RUN npm i
 
-ARG NEXT_PUBLIC_API_URL="http://localhost:4000"
+ARG NEXT_PUBLIC_API_URL="https://gam3r-deploy.onrender.com/"
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 
 ENV DATABASE_URL=""
