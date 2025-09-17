@@ -1,0 +1,27 @@
+FROM node:lts-alpine3.22
+
+WORKDIR /app
+
+# Copia manifests primeiro para melhor cache
+COPY package*.json ./
+COPY turbo.json ./
+COPY apps/api/package.json ./apps/api/package.json
+COPY packages/core/package.json ./packages/core/package.json
+
+# Copia o restante do código
+COPY . .
+
+# Instala dependências (inclui dev, pois vamos compilar dentro da imagem)
+RUN npm i
+
+# Gera Prisma Client e compila a API
+RUN cd ./apps/api/prisma && npx prisma generate
+RUN npm run build -w api
+
+ENV NODE_ENV=production
+
+# A API usará a porta definida por PORT (Render define automaticamente)
+EXPOSE 4000
+
+# Sobe apenas a API (aplica migrations antes de iniciar)
+CMD ["sh", "-c", "npx prisma migrate deploy && npm run start:prod --workspace api"]
