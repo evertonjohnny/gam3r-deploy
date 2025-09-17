@@ -28,7 +28,7 @@ model Produto {
   especificacoes Json
   ItemPedido     ItemPedido[]
 
-  @@map("produtos")
+  @@map("produto")
 }
 
 model Usuario {
@@ -42,7 +42,7 @@ model Usuario {
   endereco   Endereco? @relation(fields: [enderecoId], references: [id])
   pedidos    Pedido[]
 
-  @@map("usuarios")
+  @@map("usuario")
 }
 
 model Endereco {
@@ -56,7 +56,7 @@ model Endereco {
 
   usuario Usuario?
   
-  @@map("enderecos")
+  @@map("endereco")
 }
 
 model Pedido {
@@ -78,7 +78,7 @@ model Pedido {
 
   itens ItemPedido[]
 
-  @@map("pedidos")
+  @@map("pedido")
 }
 
 model ItemPedido {
