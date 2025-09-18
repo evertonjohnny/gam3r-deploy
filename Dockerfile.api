@@ -14,6 +14,8 @@ COPY . .
 # Instala dependências (inclui dev, pois vamos compilar dentro da imagem)
 RUN npm i
 
+RUN npm install --workspace=packages/core --workspace=packages/api
+
 # Gera Prisma Client e compila a API
 RUN cd ./apps/api/prisma && npx prisma generate
 RUN npm run build -w api
