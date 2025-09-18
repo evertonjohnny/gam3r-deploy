@@ -1,5 +1,5 @@
 services:
-  - type: packages/core
+  - type: web
     name: gam3r-core
     env: docker
     plan: free
