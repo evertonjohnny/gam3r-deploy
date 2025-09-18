@@ -1,4 +1,10 @@
 services:
+  - type: packages/core
+    name: gam3r-core
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile.package
+
   - type: web
     name: gam3r-api
     env: docker

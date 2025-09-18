@@ -1,0 +1,20 @@
+FROM node:lts-alpine3.22
+
+WORKDIR /app
+
+# Copia manifests primeiro para melhor cache
+COPY package*.json ./
+COPY turbo.json ./
+COPY packages/core/package.json ./packages/core/package.json
+
+# Copia o restante do código
+COPY . .
+
+# Instala dependências (inclui dev, pois vamos compilar dentro da imagem)
+RUN npm i
+
+RUN npm install --workspace=packages/core
+
+ENV NODE_ENV=production
+
+CMD ["npm", "run", "build", "--workspace", "packages/core"]
