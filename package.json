@@ -18,6 +18,7 @@
   "module": "./dist/index.es.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
+    "@gstore/core": "workspace:*",
     "api": "workspace:*",
     "web": "workspace:*"
   },
