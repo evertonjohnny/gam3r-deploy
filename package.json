@@ -7,7 +7,8 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "start": "turbo run start"
+    "start": "turbo run start",
+    "deploy": "turbo run build --scope=apps --includeDependencies --no-deps"
   },
   "devDependencies": {
     "prettier": "^3.5.3",
