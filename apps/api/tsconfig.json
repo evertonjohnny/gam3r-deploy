@@ -11,7 +11,7 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "@gstore/core": ["packages/core/src"]
+      "@gstore/core": ["../../packages/core/src"]
     },
     "incremental": true,
     "skipLibCheck": true,
