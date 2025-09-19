@@ -1,10 +1,6 @@
 {
   "name": "gam3r",
   "private": true,
-  "workspace" : [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "turbo run build",
     "build:api": "turbo run build --filter=api",
