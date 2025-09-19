@@ -12,9 +12,6 @@
     "start": "turbo run start",
     "deploy": "turbo run build"
   },
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/src/index.d.ts",
   "dependencies": {
     "@gstore/core": "workspace:*",
     "api": "workspace:*",
