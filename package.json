@@ -14,6 +14,13 @@
     "start": "turbo run start",
     "deploy": "turbo run build"
   },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/src/index.d.ts",
+  "dependencies": {
+    "api": "workspace:*",
+    "web": "workspace:*"
+  },
   "devDependencies": {
     "prettier": "^3.5.3",
     "turbo": "^2.4.4",
